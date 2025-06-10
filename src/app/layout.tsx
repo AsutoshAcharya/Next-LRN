@@ -1,4 +1,6 @@
+import { Navigation } from "@/components/navigation";
 import "./globals.css";
+import { ClerkProvider } from "@clerk/nextjs";
 
 export default function RootLayout({
   children,
@@ -6,8 +8,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body>{children}</body>
-    </html>
+    <ClerkProvider>
+      <html lang="en">
+        <body>
+          <Navigation />
+          {children}
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
